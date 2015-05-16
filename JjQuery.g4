@@ -156,10 +156,31 @@ BlockComment
 	'/*' .*? '*/'
 ;
 
+JQBEGIN
+:
+	'/*JQ'
+;
 
+JQEND
+:
+	'*/'
+;
 
 /****************************/
 
+main
+:
+	block endOfFile
+;
+
+block
+:
+	//to define
+;
+expression
+: 
+	//to define
+;
 
 
 ops
@@ -182,18 +203,6 @@ filter
 	| CONTENT_FILTER
 ;
 
-/*start
-:
-	line EOF
-;
-
-line
-:
-	input line?
-	| output line?
-	| exp line?
-;*/
-
 assign_selection
 :
 	VAR EQUALS selector
@@ -206,21 +215,21 @@ selector
 
 in_out
 :
-	IN 
-	| OUT
+	input 
+	| output
 ;
 
 input
 :
-	IN STRING END
+	IN VAR END 
 ;
 
 output
 :
-	OUT STRING END
+	OUT VAR END 
 ;
 
-end 
+endOfFile
 :
 	EOF
 ;
