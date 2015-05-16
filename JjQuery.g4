@@ -1,18 +1,5 @@
 grammar JjQuery;
 
-
-JQBEGIN
-:
-	'/*@jQ' -> pushMode(JQ)
-;
-
-JAVA 
-:
-	'.'
-;
-
-
-
 DOLLAR
 :
 	'$'
@@ -169,27 +156,11 @@ BlockComment
 	'/*' .*? '*/'
 ;
 
-JQEND
-: 
-	'*/' -> popMode
-;
+
 
 /****************************/
 
-main
-:  
-	( JAVA | jqBlock )+ EOF
-;
 
-jqBlock
-:
-    JQBEGIN
-    (
-        input
-        | output
-    )* JQEND
-;
- 
 
 ops
 :
@@ -249,4 +220,8 @@ output
 	OUT STRING END
 ;
 
+end 
+:
+	EOF
+;
 

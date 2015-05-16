@@ -28,16 +28,6 @@ public interface JjQueryListener extends ParseTreeListener {
 	 */
 	void exitInput(@NotNull JjQueryParser.InputContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#jqBlock}.
-	 * @param ctx the parse tree
-	 */
-	void enterJqBlock(@NotNull JjQueryParser.JqBlockContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#jqBlock}.
-	 * @param ctx the parse tree
-	 */
-	void exitJqBlock(@NotNull JjQueryParser.JqBlockContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JjQueryParser#in_out}.
 	 * @param ctx the parse tree
 	 */
@@ -68,6 +58,16 @@ public interface JjQueryListener extends ParseTreeListener {
 	 */
 	void exitAssign_selection(@NotNull JjQueryParser.Assign_selectionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JjQueryParser#end}.
+	 * @param ctx the parse tree
+	 */
+	void enterEnd(@NotNull JjQueryParser.EndContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JjQueryParser#end}.
+	 * @param ctx the parse tree
+	 */
+	void exitEnd(@NotNull JjQueryParser.EndContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JjQueryParser#filter}.
 	 * @param ctx the parse tree
 	 */
@@ -87,14 +87,4 @@ public interface JjQueryListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOps(@NotNull JjQueryParser.OpsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#main}.
-	 * @param ctx the parse tree
-	 */
-	void enterMain(@NotNull JjQueryParser.MainContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#main}.
-	 * @param ctx the parse tree
-	 */
-	void exitMain(@NotNull JjQueryParser.MainContext ctx);
 }
