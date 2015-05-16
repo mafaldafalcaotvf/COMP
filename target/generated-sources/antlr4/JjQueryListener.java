@@ -18,26 +18,6 @@ public interface JjQueryListener extends ParseTreeListener {
 	 */
 	void exitSelector(@NotNull JjQueryParser.SelectorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpression(@NotNull JjQueryParser.ExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpression(@NotNull JjQueryParser.ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#endOfFile}.
-	 * @param ctx the parse tree
-	 */
-	void enterEndOfFile(@NotNull JjQueryParser.EndOfFileContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#endOfFile}.
-	 * @param ctx the parse tree
-	 */
-	void exitEndOfFile(@NotNull JjQueryParser.EndOfFileContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link JjQueryParser#input}.
 	 * @param ctx the parse tree
 	 */
@@ -48,25 +28,15 @@ public interface JjQueryListener extends ParseTreeListener {
 	 */
 	void exitInput(@NotNull JjQueryParser.InputContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#block}.
+	 * Enter a parse tree produced by {@link JjQueryParser#jqBlock}.
 	 * @param ctx the parse tree
 	 */
-	void enterBlock(@NotNull JjQueryParser.BlockContext ctx);
+	void enterJqBlock(@NotNull JjQueryParser.JqBlockContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#block}.
+	 * Exit a parse tree produced by {@link JjQueryParser#jqBlock}.
 	 * @param ctx the parse tree
 	 */
-	void exitBlock(@NotNull JjQueryParser.BlockContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JjQueryParser#in_out}.
-	 * @param ctx the parse tree
-	 */
-	void enterIn_out(@NotNull JjQueryParser.In_outContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JjQueryParser#in_out}.
-	 * @param ctx the parse tree
-	 */
-	void exitIn_out(@NotNull JjQueryParser.In_outContext ctx);
+	void exitJqBlock(@NotNull JjQueryParser.JqBlockContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JjQueryParser#output}.
 	 * @param ctx the parse tree

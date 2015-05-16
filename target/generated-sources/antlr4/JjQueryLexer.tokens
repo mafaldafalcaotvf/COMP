@@ -4,14 +4,13 @@ OPENB=10
 LETTER=2
 NUMBER=4
 ENDS_WITH=21
-JQEND=30
+JQEND=29
 EQUALS=18
 QUOTES=14
 NOT_EQUALS=19
 CONTAINS_SUB_STRING=15
 BASIC_FILTER=22
-JQBEGIN=29
-BlockComment=28
+JQBEGIN=28
 WS=27
 CHILD_FILTER=25
 IN=12
@@ -33,7 +32,7 @@ STRING=6
 '|='=17
 '^='=20
 '\"'=14
-'*/'=30
+'*/'=29
 '~='=16
 '$='=21
 ';'=7
@@ -41,7 +40,7 @@ STRING=6
 '='=18
 '('=8
 '['=10
-'/*JQ'=29
+'/*JQ'=28
 ')'=9
 'in'=12
 '*='=15

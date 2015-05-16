@@ -148,12 +148,7 @@ OPERATION
 
 WS
 :
-[ \t\n\r]+ -> skip
-;
-
-BlockComment
-:
-	'/*' .*? '*/'
+	[ \t\n\r]+ -> skip
 ;
 
 JQBEGIN
@@ -170,17 +165,14 @@ JQEND
 
 main
 :
-	block endOfFile
+	//TO DO
 ;
 
-block
+jqBlock
 :
-	//to define
+	//TO DO
 ;
-expression
-: 
-	//to define
-;
+
 
 
 ops
@@ -212,25 +204,12 @@ selector
 	DOLLAR OPENP VAR (OPENB ops STRING CLOSEB | filter)? CLOSEP (OPERATION)? END
 ;
 
-
-in_out
-:
-	input 
-	| output
-;
-
 input
 :
-	IN VAR END 
+	IN 
 ;
 
 output
 :
-	OUT VAR END 
+	OUT 
 ;
-
-endOfFile
-:
-	EOF
-;
-

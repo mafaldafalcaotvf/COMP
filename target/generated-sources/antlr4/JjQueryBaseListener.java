@@ -28,30 +28,6 @@ public class JjQueryBaseListener implements JjQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(@NotNull JjQueryParser.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpression(@NotNull JjQueryParser.ExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterEndOfFile(@NotNull JjQueryParser.EndOfFileContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitEndOfFile(@NotNull JjQueryParser.EndOfFileContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterInput(@NotNull JjQueryParser.InputContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -64,25 +40,13 @@ public class JjQueryBaseListener implements JjQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(@NotNull JjQueryParser.BlockContext ctx) { }
+	@Override public void enterJqBlock(@NotNull JjQueryParser.JqBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(@NotNull JjQueryParser.BlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIn_out(@NotNull JjQueryParser.In_outContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIn_out(@NotNull JjQueryParser.In_outContext ctx) { }
+	@Override public void exitJqBlock(@NotNull JjQueryParser.JqBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
