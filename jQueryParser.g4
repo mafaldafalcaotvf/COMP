@@ -50,10 +50,10 @@ selector
 
 input
 :
-	IN 
+	IN assign_selection
 ;
 
 output
 :
-	OUT 
+	OUT assign_selection
 ;
