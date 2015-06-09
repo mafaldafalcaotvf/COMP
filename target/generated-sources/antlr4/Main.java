@@ -24,12 +24,12 @@ public class Main {
 		jQueryLexer lexer = new jQueryLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		jQueryParserParser parser = new jQueryParserParser(tokens);
-		ParserRuleContext tree = parser.main();
+		ParserRuleContext tree = parser.start();
 		System.out.println(tree.toStringTree(parser)); // print LISP-style tree
 		ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
 		TreeViewer viewer = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree);
 		
-		MyjQueryListener extractor = new MyjQueryListener();
+		MyjQueryListenerold extractor = new MyjQueryListenerold();
 		walker.walk(extractor, tree);
 		
 		JFrame frame = new JFrame("Antlr AST");

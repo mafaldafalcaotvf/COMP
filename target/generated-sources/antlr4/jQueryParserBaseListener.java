@@ -1228,13 +1228,13 @@ public class jQueryParserBaseListener implements jQueryParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMain(jQueryParserParser.MainContext ctx) { }
+	@Override public void enterStart(jQueryParserParser.StartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMain(jQueryParserParser.MainContext ctx) { }
+	@Override public void exitStart(jQueryParserParser.StartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1271,18 +1271,6 @@ public class jQueryParserBaseListener implements jQueryParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFilter(jQueryParserParser.FilterContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVariable(jQueryParserParser.VariableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVariable(jQueryParserParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

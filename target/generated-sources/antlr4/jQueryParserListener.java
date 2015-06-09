@@ -1018,15 +1018,15 @@ public interface jQueryParserListener extends ParseTreeListener {
 	 */
 	void exitArguments(jQueryParserParser.ArgumentsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link jQueryParserParser#main}.
+	 * Enter a parse tree produced by {@link jQueryParserParser#start}.
 	 * @param ctx the parse tree
 	 */
-	void enterMain(jQueryParserParser.MainContext ctx);
+	void enterStart(jQueryParserParser.StartContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link jQueryParserParser#main}.
+	 * Exit a parse tree produced by {@link jQueryParserParser#start}.
 	 * @param ctx the parse tree
 	 */
-	void exitMain(jQueryParserParser.MainContext ctx);
+	void exitStart(jQueryParserParser.StartContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link jQueryParserParser#code}.
 	 * @param ctx the parse tree
@@ -1057,16 +1057,6 @@ public interface jQueryParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFilter(jQueryParserParser.FilterContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link jQueryParserParser#variable}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariable(jQueryParserParser.VariableContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link jQueryParserParser#variable}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariable(jQueryParserParser.VariableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link jQueryParserParser#assign_selection}.
 	 * @param ctx the parse tree
