@@ -921,10 +921,10 @@ LINE_COMMENT
     :   '//' ~[\r\n]* -> skip
     ;
 
-/*main
+main
 :
-	(JAVA | jqBlock)+ EOF
-;*/
+	jqBlock EOF
+;
 
 jqBlock
 :
