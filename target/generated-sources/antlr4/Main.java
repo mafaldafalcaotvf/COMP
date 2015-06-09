@@ -29,10 +29,10 @@ public class Main {
 		ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
 		TreeViewer viewer = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree);
 		
-		MyjQueryListenerold extractor = new MyjQueryListenerold();
+		MyjQueryListener extractor = new MyjQueryListener();
 		walker.walk(extractor, tree);
 		
-		JFrame frame = new JFrame("Antlr AST");
+		JFrame frame = new JFrame("Antlr Tree");
 		JPanel panel = new JPanel();
 		viewer.setScale(1.5);
 		panel.add(viewer);
