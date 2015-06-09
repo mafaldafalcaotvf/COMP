@@ -2,11 +2,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.tree.gui.TreeViewer;
 
 public class Main {
 
@@ -22,9 +27,19 @@ public class Main {
 		ParserRuleContext tree = parser.main();
 		System.out.println(tree.toStringTree(parser)); // print LISP-style tree
 		ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
-														
+		TreeViewer viewer = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree);
+		
 		MyjQueryListener extractor = new MyjQueryListener();
 		walker.walk(extractor, tree);
+		
+		JFrame frame = new JFrame("Antlr AST");
+		JPanel panel = new JPanel();
+		viewer.setScale(1.5);
+		panel.add(viewer);
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(200,200);
+		frame.setVisible(true);
 	}
 	
 }

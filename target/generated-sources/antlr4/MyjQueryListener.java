@@ -33,6 +33,13 @@ public class MyjQueryListener extends jQueryParserBaseListener
     		String str = ctx.getText();
     		Variable v = null;
     		
+    		if(localVarsInUse.containsKey(str))
+    		{
+    			/*if(localVarsInUse.get(str).)
+    			{
+    				v = localVarsInUse.get(str);
+    			}*/
+    		}
     		
 
     	} catch (NullPointerException e) {
@@ -43,13 +50,13 @@ public class MyjQueryListener extends jQueryParserBaseListener
 
     @Override 
     public void exitInput(jQueryParserParser.InputContext ctx) { }
- 
-    @Override 
-    public void enterJqBlock(jQueryParserParser.JqBlockContext ctx) { }
-
-    @Override 
-    public void exitJqBlock(jQueryParserParser.JqBlockContext ctx) { }
-
+    
+    @Override
+    public void enterCode(jQueryParserParser.CodeContext ctx){}
+	
+    @Override
+	public void exitCode(jQueryParserParser.CodeContext ctx){}
+    
     @Override 
     public void enterOutput(jQueryParserParser.OutputContext ctx) { }
 

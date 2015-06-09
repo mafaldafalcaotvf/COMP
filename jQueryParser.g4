@@ -821,55 +821,7 @@ NullLiteral
     :   'null'
     ;
 
-// §3.11 Separators
 
-LPAREN          : '(';
-RPAREN          : ')';
-LBRACE          : '{';
-RBRACE          : '}';
-LBRACK          : '[';
-RBRACK          : ']';
-SEMI            : ';';
-COMMA           : ',';
-DOT             : '.';
-
-// §3.12 Operators
-
-ASSIGN          : '=';
-GT              : '>';
-LT              : '<';
-BANG            : '!';
-TILDE           : '~';
-QUESTION        : '?';
-COLON           : ':';
-EQUAL           : '==';
-LE              : '<=';
-GE              : '>=';
-NOTEQUAL        : '!=';
-AND             : '&&';
-OR              : '||';
-INC             : '++';
-DEC             : '--';
-ADD             : '+';
-SUB             : '-';
-MUL             : '*';
-DIV             : '/';
-BITAND          : '&';
-BITOR           : '|';
-CARET           : '^';
-MOD             : '%';
-
-ADD_ASSIGN      : '+=';
-SUB_ASSIGN      : '-=';
-MUL_ASSIGN      : '*=';
-DIV_ASSIGN      : '/=';
-AND_ASSIGN      : '&=';
-OR_ASSIGN       : '|=';
-XOR_ASSIGN      : '^=';
-MOD_ASSIGN      : '%=';
-LSHIFT_ASSIGN   : '<<=';
-RSHIFT_ASSIGN   : '>>=';
-URSHIFT_ASSIGN  : '>>>=';
 
 // §3.8 Identifiers (must appear after all keywords in the grammar)
 
@@ -906,33 +858,16 @@ JavaLetterOrDigit
 AT : '@';
 ELLIPSIS : '...';
 
-//
-// Whitespace and comments
-//
-
-WS  :  [ \t\r\n\u000C]+ -> skip
-    ;
-
-COMMENT
-    :   '/*' .*? '*/' -> skip
-    ;
-
-LINE_COMMENT
-    :   '//' ~[\r\n]* -> skip
-    ;
-
 main
 :
-	jqBlock EOF
+	JQBEGIN code JQEND <EOF>
 ;
 
-jqBlock
+code
 :
-	JQBEGIN
-    (
-        input
-        | output
-    )* JQEND
+	input
+	| output
+	| selector
 ;
 
 
