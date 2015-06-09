@@ -965,7 +965,7 @@ variable
 
 assign_selection
 :
-	VAR EQUALS selector
+	variable EQUALS selector
 ;
 
 selector 
@@ -975,7 +975,7 @@ selector
 
 input
 :
-	IN assign_selection
+	IN variable
 ;
 
 output
