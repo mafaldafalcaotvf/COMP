@@ -41,11 +41,11 @@ NUMBER
 
 VAR
 :
-	LETTER
+	'"'LETTER
 	(
 		LETTER
 		| DIGIT
-	)*
+	)*'"'
 ;
 
 STRING
@@ -79,6 +79,16 @@ OPENB
 CLOSEB
 :
 	']'
+;
+
+OPENC
+:
+	'{'
+;
+
+CLOSEC
+:
+	'}'
 ;
 
 IN
@@ -165,9 +175,42 @@ CHILD_FILTER
 	| ':only-child'
 ;
 
+EVENT
+:
+	('click'
+	|'dclick'
+	|'mouseenter'
+	|'mouseleave'
+	|'mouseup'
+	|'hover'
+	|'focus'
+	|'blur'
+	) OPENP CLOSEP
+;
+
+ADDFUNCS
+:
+	('append'
+	|'prepend'
+	|'after'
+	|'before'
+	) OPENP ( ('"' STRING '"') | VAR  ) CLOSEP
+;
+
+VARTYPE
+:
+	'int'
+	|'float'
+	|'String'
+	|'boolean'
+	|'Array'
+	|'void'
+	
+;
+
 OPERATION
 :
-	'.' STRING
+	STRING OPENP CLOSEP
 ;
 
 WS

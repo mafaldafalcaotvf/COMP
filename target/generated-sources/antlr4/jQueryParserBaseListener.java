@@ -76,6 +76,18 @@ public class jQueryParserBaseListener implements jQueryParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVariable(@NotNull jQueryParserParser.VariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariable(@NotNull jQueryParserParser.VariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFilter(@NotNull jQueryParserParser.FilterContext ctx) { }
 	/**
 	 * {@inheritDoc}

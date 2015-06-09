@@ -58,6 +58,16 @@ public interface jQueryParserListener extends ParseTreeListener {
 	 */
 	void exitAssign_selection(@NotNull jQueryParserParser.Assign_selectionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link jQueryParserParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariable(@NotNull jQueryParserParser.VariableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link jQueryParserParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariable(@NotNull jQueryParserParser.VariableContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link jQueryParserParser#filter}.
 	 * @param ctx the parse tree
 	 */

@@ -16,25 +16,25 @@ public class jQueryParserParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		DOLLAR=4, STARTS_WITH=23, OPENB=13, LETTER=5, JAVA=1, NUMBER=7, ENDS_WITH=24, 
-		JQEND=3, EQUALS=21, QUOTES=17, NOT_EQUALS=22, CONTAINS_SUB_STRING=18, 
-		BASIC_FILTER=25, JQBEGIN=2, WS=30, CHILD_FILTER=28, IN=15, CONTAINS_WORD=19, 
-		CLOSEP=12, OUT=16, HIERARCHY_SELECTOR=27, CONTENT_FILTER=26, BLOCKCOMMENT=31, 
-		VAR=8, CLOSEB=14, DIGIT=6, OPERATION=29, END=10, CONTAINS_PREFIX=20, OPENP=11, 
-		STRING=9;
+		T__0=1, STARTS_WITH=25, DOLLAR=4, OPENC=15, OPENB=13, LETTER=5, JAVA=1, 
+		ENDS_WITH=26, NUMBER=7, JQEND=3, EQUALS=23, QUOTES=19, EVENT=31, NOT_EQUALS=24, 
+		CONTAINS_SUB_STRING=20, BASIC_FILTER=27, VARTYPE=33, JQBEGIN=2, WS=35, 
+		CHILD_FILTER=30, IN=17, CONTAINS_WORD=21, CLOSEP=12, OUT=18, HIERARCHY_SELECTOR=29, 
+		CONTENT_FILTER=28, BLOCKCOMMENT=36, VAR=8, CLOSEB=14, CLOSEC=16, DIGIT=6, 
+		OPERATION=34, END=10, CONTAINS_PREFIX=22, OPENP=11, ADDFUNCS=32, STRING=9;
 	public static final String[] tokenNames = {
-		"<INVALID>", "JAVA", "'/*@JQ'", "'@JQ*/'", "'$'", "LETTER", "DIGIT", "NUMBER", 
-		"VAR", "STRING", "';'", "'('", "')'", "'['", "']'", "'in'", "'out'", "'\"'", 
-		"'*='", "'~='", "'|='", "'='", "'!='", "'^='", "'$='", "BASIC_FILTER", 
-		"CONTENT_FILTER", "HIERARCHY_SELECTOR", "CHILD_FILTER", "OPERATION", "WS", 
-		"BLOCKCOMMENT"
+		"<INVALID>", "'.'", "'/*@JQ'", "'@JQ*/'", "'$'", "LETTER", "DIGIT", "NUMBER", 
+		"VAR", "STRING", "';'", "'('", "')'", "'['", "']'", "'{'", "'}'", "'in'", 
+		"'out'", "'\"'", "'*='", "'~='", "'|='", "'='", "'!='", "'^='", "'$='", 
+		"BASIC_FILTER", "CONTENT_FILTER", "HIERARCHY_SELECTOR", "CHILD_FILTER", 
+		"EVENT", "ADDFUNCS", "VARTYPE", "OPERATION", "WS", "BLOCKCOMMENT"
 	};
 	public static final int
-		RULE_main = 0, RULE_jqBlock = 1, RULE_ops = 2, RULE_filter = 3, RULE_assign_selection = 4, 
-		RULE_selector = 5, RULE_input = 6, RULE_output = 7;
+		RULE_main = 0, RULE_jqBlock = 1, RULE_ops = 2, RULE_filter = 3, RULE_variable = 4, 
+		RULE_assign_selection = 5, RULE_selector = 6, RULE_input = 7, RULE_output = 8;
 	public static final String[] ruleNames = {
-		"main", "jqBlock", "ops", "filter", "assign_selection", "selector", "input", 
-		"output"
+		"main", "jqBlock", "ops", "filter", "variable", "assign_selection", "selector", 
+		"input", "output"
 	};
 
 	@Override
@@ -89,32 +89,32 @@ public class jQueryParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18); 
+			setState(20); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				setState(18);
+				setState(20);
 				switch (_input.LA(1)) {
-				case JAVA:
+				case T__0:
 					{
-					setState(16); match(JAVA);
+					setState(18); match(T__0);
 					}
 					break;
 				case JQBEGIN:
 					{
-					setState(17); jqBlock();
+					setState(19); jqBlock();
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(20); 
+				setState(22); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==JAVA || _la==JQBEGIN );
-			setState(22); match(EOF);
+			} while ( _la==T__0 || _la==JQBEGIN );
+			setState(24); match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -164,33 +164,33 @@ public class jQueryParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(24); match(JQBEGIN);
-			setState(29);
+			setState(26); match(JQBEGIN);
+			setState(31);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==IN || _la==OUT) {
 				{
-				setState(27);
+				setState(29);
 				switch (_input.LA(1)) {
 				case IN:
 					{
-					setState(25); input();
+					setState(27); input();
 					}
 					break;
 				case OUT:
 					{
-					setState(26); output();
+					setState(28); output();
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(31);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(32); match(JQEND);
+			setState(34); match(JQEND);
 			}
 		}
 		catch (RecognitionException re) {
@@ -205,6 +205,7 @@ public class jQueryParserParser extends Parser {
 	}
 
 	public static class OpsContext extends ParserRuleContext {
+		public TerminalNode EVENT() { return getToken(jQueryParserParser.EVENT, 0); }
 		public TerminalNode EQUALS() { return getToken(jQueryParserParser.EQUALS, 0); }
 		public TerminalNode CONTAINS_WORD(int i) {
 			return getToken(jQueryParserParser.CONTAINS_WORD, i);
@@ -214,6 +215,7 @@ public class jQueryParserParser extends Parser {
 		public List<TerminalNode> CONTAINS_WORD() { return getTokens(jQueryParserParser.CONTAINS_WORD); }
 		public TerminalNode NOT_EQUALS() { return getToken(jQueryParserParser.NOT_EQUALS, 0); }
 		public TerminalNode CONTAINS_PREFIX() { return getToken(jQueryParserParser.CONTAINS_PREFIX, 0); }
+		public TerminalNode ADDFUNCS() { return getToken(jQueryParserParser.ADDFUNCS, 0); }
 		public TerminalNode STARTS_WITH() { return getToken(jQueryParserParser.STARTS_WITH, 0); }
 		public OpsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -236,9 +238,9 @@ public class jQueryParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(34);
+			setState(36);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CONTAINS_SUB_STRING) | (1L << CONTAINS_WORD) | (1L << CONTAINS_PREFIX) | (1L << EQUALS) | (1L << NOT_EQUALS) | (1L << STARTS_WITH) | (1L << ENDS_WITH))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CONTAINS_SUB_STRING) | (1L << CONTAINS_WORD) | (1L << CONTAINS_PREFIX) | (1L << EQUALS) | (1L << NOT_EQUALS) | (1L << STARTS_WITH) | (1L << ENDS_WITH) | (1L << EVENT) | (1L << ADDFUNCS))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -281,12 +283,58 @@ public class jQueryParserParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36);
+			setState(38);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BASIC_FILTER) | (1L << CONTENT_FILTER) | (1L << HIERARCHY_SELECTOR) | (1L << CHILD_FILTER))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class VariableContext extends ParserRuleContext {
+		public TerminalNode VAR() { return getToken(jQueryParserParser.VAR, 0); }
+		public TerminalNode VARTYPE() { return getToken(jQueryParserParser.VARTYPE, 0); }
+		public VariableContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_variable; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof jQueryParserListener ) ((jQueryParserListener)listener).enterVariable(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof jQueryParserListener ) ((jQueryParserListener)listener).exitVariable(this);
+		}
+	}
+
+	public final VariableContext variable() throws RecognitionException {
+		VariableContext _localctx = new VariableContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_variable);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(41);
+			_la = _input.LA(1);
+			if (_la==VARTYPE) {
+				{
+				setState(40); match(VARTYPE);
+				}
+			}
+
+			setState(43); match(VAR);
 			}
 		}
 		catch (RecognitionException re) {
@@ -322,13 +370,13 @@ public class jQueryParserParser extends Parser {
 
 	public final Assign_selectionContext assign_selection() throws RecognitionException {
 		Assign_selectionContext _localctx = new Assign_selectionContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_assign_selection);
+		enterRule(_localctx, 10, RULE_assign_selection);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(38); match(VAR);
-			setState(39); match(EQUALS);
-			setState(40); selector();
+			setState(45); match(VAR);
+			setState(46); match(EQUALS);
+			setState(47); selector();
 			}
 		}
 		catch (RecognitionException re) {
@@ -343,20 +391,22 @@ public class jQueryParserParser extends Parser {
 	}
 
 	public static class SelectorContext extends ParserRuleContext {
+		public TerminalNode OPERATION() { return getToken(jQueryParserParser.OPERATION, 0); }
+		public TerminalNode OPENP() { return getToken(jQueryParserParser.OPENP, 0); }
+		public TerminalNode DOLLAR() { return getToken(jQueryParserParser.DOLLAR, 0); }
 		public TerminalNode OPENB() { return getToken(jQueryParserParser.OPENB, 0); }
 		public TerminalNode CLOSEP() { return getToken(jQueryParserParser.CLOSEP, 0); }
 		public FilterContext filter() {
 			return getRuleContext(FilterContext.class,0);
 		}
-		public TerminalNode OPERATION() { return getToken(jQueryParserParser.OPERATION, 0); }
+		public TerminalNode EVENT() { return getToken(jQueryParserParser.EVENT, 0); }
 		public OpsContext ops() {
 			return getRuleContext(OpsContext.class,0);
 		}
 		public TerminalNode VAR() { return getToken(jQueryParserParser.VAR, 0); }
-		public TerminalNode OPENP() { return getToken(jQueryParserParser.OPENP, 0); }
-		public TerminalNode DOLLAR() { return getToken(jQueryParserParser.DOLLAR, 0); }
-		public TerminalNode CLOSEB() { return getToken(jQueryParserParser.CLOSEB, 0); }
+		public TerminalNode ADDFUNCS() { return getToken(jQueryParserParser.ADDFUNCS, 0); }
 		public TerminalNode STRING() { return getToken(jQueryParserParser.STRING, 0); }
+		public TerminalNode CLOSEB() { return getToken(jQueryParserParser.CLOSEB, 0); }
 		public TerminalNode END() { return getToken(jQueryParserParser.END, 0); }
 		public SelectorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -374,22 +424,22 @@ public class jQueryParserParser extends Parser {
 
 	public final SelectorContext selector() throws RecognitionException {
 		SelectorContext _localctx = new SelectorContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_selector);
+		enterRule(_localctx, 12, RULE_selector);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42); match(DOLLAR);
-			setState(43); match(OPENP);
-			setState(44); match(VAR);
-			setState(51);
+			setState(49); match(DOLLAR);
+			setState(50); match(OPENP);
+			setState(51); match(VAR);
+			setState(58);
 			switch (_input.LA(1)) {
 			case OPENB:
 				{
-				setState(45); match(OPENB);
-				setState(46); ops();
-				setState(47); match(STRING);
-				setState(48); match(CLOSEB);
+				setState(52); match(OPENB);
+				setState(53); ops();
+				setState(54); match(STRING);
+				setState(55); match(CLOSEB);
 				}
 				break;
 			case BASIC_FILTER:
@@ -397,7 +447,7 @@ public class jQueryParserParser extends Parser {
 			case HIERARCHY_SELECTOR:
 			case CHILD_FILTER:
 				{
-				setState(50); filter();
+				setState(57); filter();
 				}
 				break;
 			case CLOSEP:
@@ -405,16 +455,22 @@ public class jQueryParserParser extends Parser {
 			default:
 				throw new NoViableAltException(this);
 			}
-			setState(53); match(CLOSEP);
-			setState(55);
+			setState(60); match(CLOSEP);
+			setState(61); match(T__0);
+			setState(63);
 			_la = _input.LA(1);
-			if (_la==OPERATION) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EVENT) | (1L << ADDFUNCS) | (1L << OPERATION))) != 0)) {
 				{
-				setState(54); match(OPERATION);
+				setState(62);
+				_la = _input.LA(1);
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << EVENT) | (1L << ADDFUNCS) | (1L << OPERATION))) != 0)) ) {
+				_errHandler.recoverInline(this);
+				}
+				consume();
 				}
 			}
 
-			setState(57); match(END);
+			setState(65); match(END);
 			}
 		}
 		catch (RecognitionException re) {
@@ -449,12 +505,12 @@ public class jQueryParserParser extends Parser {
 
 	public final InputContext input() throws RecognitionException {
 		InputContext _localctx = new InputContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_input);
+		enterRule(_localctx, 14, RULE_input);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(59); match(IN);
-			setState(60); assign_selection();
+			setState(67); match(IN);
+			setState(68); assign_selection();
 			}
 		}
 		catch (RecognitionException re) {
@@ -489,12 +545,12 @@ public class jQueryParserParser extends Parser {
 
 	public final OutputContext output() throws RecognitionException {
 		OutputContext _localctx = new OutputContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_output);
+		enterRule(_localctx, 16, RULE_output);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62); match(OUT);
-			setState(63); assign_selection();
+			setState(70); match(OUT);
+			setState(71); assign_selection();
 			}
 		}
 		catch (RecognitionException re) {
@@ -509,24 +565,25 @@ public class jQueryParserParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!D\4\2\t\2\4\3\t\3"+
-		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\6\2\25\n\2\r"+
-		"\2\16\2\26\3\2\3\2\3\3\3\3\3\3\7\3\36\n\3\f\3\16\3!\13\3\3\3\3\3\3\4\3"+
-		"\4\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\66"+
-		"\n\7\3\7\3\7\5\7:\n\7\3\7\3\7\3\b\3\b\3\b\3\t\3\t\3\t\3\t\2\2\n\2\4\6"+
-		"\b\n\f\16\20\2\4\3\2\24\32\3\2\33\36B\2\24\3\2\2\2\4\32\3\2\2\2\6$\3\2"+
-		"\2\2\b&\3\2\2\2\n(\3\2\2\2\f,\3\2\2\2\16=\3\2\2\2\20@\3\2\2\2\22\25\7"+
-		"\3\2\2\23\25\5\4\3\2\24\22\3\2\2\2\24\23\3\2\2\2\25\26\3\2\2\2\26\24\3"+
-		"\2\2\2\26\27\3\2\2\2\27\30\3\2\2\2\30\31\7\2\2\3\31\3\3\2\2\2\32\37\7"+
-		"\4\2\2\33\36\5\16\b\2\34\36\5\20\t\2\35\33\3\2\2\2\35\34\3\2\2\2\36!\3"+
-		"\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\5\2\2#\5"+
-		"\3\2\2\2$%\t\2\2\2%\7\3\2\2\2&\'\t\3\2\2\'\t\3\2\2\2()\7\n\2\2)*\7\27"+
-		"\2\2*+\5\f\7\2+\13\3\2\2\2,-\7\6\2\2-.\7\r\2\2.\65\7\n\2\2/\60\7\17\2"+
-		"\2\60\61\5\6\4\2\61\62\7\13\2\2\62\63\7\20\2\2\63\66\3\2\2\2\64\66\5\b"+
-		"\5\2\65/\3\2\2\2\65\64\3\2\2\2\65\66\3\2\2\2\66\67\3\2\2\2\679\7\16\2"+
-		"\28:\7\37\2\298\3\2\2\29:\3\2\2\2:;\3\2\2\2;<\7\f\2\2<\r\3\2\2\2=>\7\21"+
-		"\2\2>?\5\n\6\2?\17\3\2\2\2@A\7\22\2\2AB\5\n\6\2B\21\3\2\2\2\b\24\26\35"+
-		"\37\659";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3&L\4\2\t\2\4\3\t\3"+
+		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\6\2\27"+
+		"\n\2\r\2\16\2\30\3\2\3\2\3\3\3\3\3\3\7\3 \n\3\f\3\16\3#\13\3\3\3\3\3\3"+
+		"\4\3\4\3\5\3\5\3\6\5\6,\n\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3"+
+		"\b\3\b\3\b\3\b\3\b\5\b=\n\b\3\b\3\b\3\b\5\bB\n\b\3\b\3\b\3\t\3\t\3\t\3"+
+		"\n\3\n\3\n\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\5\4\2\26\34!\"\3\2\35 \4"+
+		"\2!\"$$J\2\26\3\2\2\2\4\34\3\2\2\2\6&\3\2\2\2\b(\3\2\2\2\n+\3\2\2\2\f"+
+		"/\3\2\2\2\16\63\3\2\2\2\20E\3\2\2\2\22H\3\2\2\2\24\27\7\3\2\2\25\27\5"+
+		"\4\3\2\26\24\3\2\2\2\26\25\3\2\2\2\27\30\3\2\2\2\30\26\3\2\2\2\30\31\3"+
+		"\2\2\2\31\32\3\2\2\2\32\33\7\2\2\3\33\3\3\2\2\2\34!\7\4\2\2\35 \5\20\t"+
+		"\2\36 \5\22\n\2\37\35\3\2\2\2\37\36\3\2\2\2 #\3\2\2\2!\37\3\2\2\2!\"\3"+
+		"\2\2\2\"$\3\2\2\2#!\3\2\2\2$%\7\5\2\2%\5\3\2\2\2&\'\t\2\2\2\'\7\3\2\2"+
+		"\2()\t\3\2\2)\t\3\2\2\2*,\7#\2\2+*\3\2\2\2+,\3\2\2\2,-\3\2\2\2-.\7\n\2"+
+		"\2.\13\3\2\2\2/\60\7\n\2\2\60\61\7\31\2\2\61\62\5\16\b\2\62\r\3\2\2\2"+
+		"\63\64\7\6\2\2\64\65\7\r\2\2\65<\7\n\2\2\66\67\7\17\2\2\678\5\6\4\289"+
+		"\7\13\2\29:\7\20\2\2:=\3\2\2\2;=\5\b\5\2<\66\3\2\2\2<;\3\2\2\2<=\3\2\2"+
+		"\2=>\3\2\2\2>?\7\16\2\2?A\7\3\2\2@B\t\4\2\2A@\3\2\2\2AB\3\2\2\2BC\3\2"+
+		"\2\2CD\7\f\2\2D\17\3\2\2\2EF\7\23\2\2FG\5\f\7\2G\21\3\2\2\2HI\7\24\2\2"+
+		"IJ\5\f\7\2J\23\3\2\2\2\t\26\30\37!+<A";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

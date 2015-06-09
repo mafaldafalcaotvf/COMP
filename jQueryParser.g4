@@ -29,6 +29,8 @@ ops
 	| NOT_EQUALS
 	| STARTS_WITH
 	| ENDS_WITH
+	| ADDFUNCS
+	| EVENT
 ;
 
 filter 
@@ -39,13 +41,19 @@ filter
 	| CONTENT_FILTER
 ;
 
+variable
+:
+	(VARTYPE)? VAR
+;
+
 assign_selection
 :
 	VAR EQUALS selector
 ;
+
 selector 
 :
-	DOLLAR OPENP VAR (OPENB ops STRING CLOSEB | filter)? CLOSEP (OPERATION)? END
+	DOLLAR OPENP VAR (OPENB ops STRING CLOSEB | filter)? CLOSEP '.' (OPERATION | ADDFUNCS | EVENT)? END
 ;
 
 input
