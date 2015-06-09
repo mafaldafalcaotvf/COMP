@@ -20,6 +20,8 @@ public class MyjQueryListener implements jQueryParserListener {
 		localVarsInUse = new HashMap<String, Variable>();
 		errors = 0;
 	}
+	
+	
 
 	@Override public void enterCompilationUnit(jQueryParserParser.CompilationUnitContext ctx) { }
 	
@@ -1061,6 +1063,8 @@ public class MyjQueryListener implements jQueryParserListener {
 	 */
 	@Override public void enterStart(jQueryParserParser.StartContext ctx) { 
 		//iniciar o bloco de jquery, está definido com mode
+		/*Main.representation.add(new Block(ctx.JQUERYBEGIN().getSymbol()
+				.getLine(), ctx.JQUERYEND().getSymbol().getLine()));*/
 	}
 	/**
 	 * {@inheritDoc}
@@ -1112,7 +1116,12 @@ public class MyjQueryListener implements jQueryParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssign_selection(jQueryParserParser.Assign_selectionContext ctx) { }
+	@Override public void enterAssign_selection(jQueryParserParser.Assign_selectionContext ctx) { 
+		Variable v = null;
+		Variable inV = null;
+		Variable outV = null;
+
+	}
 	/**
 	 * {@inheritDoc}
 	 *

@@ -555,7 +555,7 @@ nonWildcardTypeArgumentsOrDiamond
     ;
 
 superSuffix
-    :   arguments
+    :   arguments 
     |   '.' Identifier arguments?
     ;
 
@@ -577,7 +577,7 @@ start
 code
 :
 	input code?
-	| output code?
+	| output (code|assign_selection)?
 	| selector code?
 ;
 
@@ -611,7 +611,7 @@ assign_selection
 
 selector 
 :
-	OPENS STRING (OPENB ops STRING CLOSEB | filter)? CLOSES '.' (OPERATION | ADDFUNCS | EVENT)? END
+	OPENS STRING (OPENB STRING ops VALUE CLOSEB (STRING)? | filter)? CLOSES ('.' (OPERATION | ADDFUNCS | EVENT))? END
 ;
 
 input
@@ -621,5 +621,5 @@ input
 
 output
 :
-	OUT assign_selection END
+	OUT STRING END
 ;

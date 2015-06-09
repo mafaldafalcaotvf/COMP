@@ -436,12 +436,27 @@ DIGIT
 	[0-9]
 ;
 
+VALUE
+:
+	'"' STRING '"'
+;
+
 NUMBER
 :
 	(
 		DIGIT
 	)+
 ;
+IN
+:
+	'in'
+;
+
+OUT
+:
+	'out'
+;
+
 
 STRING
 :
@@ -483,15 +498,7 @@ CLOSEC
 	'}'
 ;
 
-IN
-:
-	'in'
-;
 
-OUT
-:
-	'out'
-;
 
 QUOTES
 :
